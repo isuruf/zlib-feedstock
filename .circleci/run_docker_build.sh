@@ -17,7 +17,7 @@ channels:
  - defaults
 
 conda-build:
- root-dir: /home/conda/feedstock_root/build_artifacts
+ root-dir: /home/conda/feedstock_root/build_artefacts
 
 show_channel_urls: true
 
@@ -34,7 +34,7 @@ if hash docker-machine 2> /dev/null && docker-machine active > /dev/null; then
     HOST_USER_ID=$(docker-machine ssh $(docker-machine active) id -u)
 fi
 
-rm -f "$FEEDSTOCK_ROOT/build_artifacts/conda-forge-build-done"
+rm -f "$FEEDSTOCK_ROOT/build_artefacts/conda-forge-build-done"
 
 cat << EOF | docker run -i \
                         -v "${RECIPE_ROOT}":/home/conda/recipe_root \
@@ -51,10 +51,10 @@ set -x
 export PYTHONUNBUFFERED=1
 
 echo "$config" > ~/.condarc
-# A lock sometimes occurs with incomplete builds. The lock file is stored in build_artifacts.
+# A lock sometimes occurs with incomplete builds. The lock file is stored in build_artefacts.
 conda clean --lock
 
-mkdir -p /home/conda/feedstock_root/build_artifacts/work
+mkdir -p /home/conda/feedstock_root/build_artefacts/work
 
 conda install --yes --quiet conda-forge-build-setup
 source run_conda_forge_build_setup
@@ -65,11 +65,11 @@ conda install -n root --quiet --yes -c defaults conda-build
 conda build /home/conda/recipe_root -m /home/conda/feedstock_root/ci_support/matrix/${CONFIG}.yaml --quiet || exit 1
 upload_or_check_non_existence /home/conda/recipe_root conda-forge --channel=main -m /home/conda/feedstock_root/ci_support/matrix/${CONFIG}.yaml || exit 1
 
-touch /home/conda/feedstock_root/build_artifacts/conda-forge-build-done
+touch /home/conda/feedstock_root/build_artefacts/conda-forge-build-done
 EOF
 
 # double-check that the build got to the end
 # see https://github.com/conda-forge/conda-smithy/pull/337
 # for a possible fix
 set -x
-test -f "$FEEDSTOCK_ROOT/build_artifacts/conda-forge-build-done" || exit 1
+test -f "$FEEDSTOCK_ROOT/build_artefacts/conda-forge-build-done" || exit 1
