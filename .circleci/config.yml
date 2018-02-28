@@ -13,11 +13,20 @@ jobs:
           command: |
             ./.circleci/fast_finish_ci_pr_build.sh
             ./.circleci/checkout_merge_commit.sh
+      - restore_cache:
+          keys:
+            - ccache-{{ .Branch }}
+            - ccache-master
       - run:
           command: docker pull condaforge/linux-anvil
       - run:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
           command: ./.circleci/run_docker_build.sh
+      - save_cache:
+          key: ccache-{{ .Branch }}
+          paths:
+            - ./build_artifacts/.ccache
+          when: always
 
 workflows:
   version: 2

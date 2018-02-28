@@ -14,9 +14,9 @@ Summary: Massively spiffy yet delicately unobtrusive compression library
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/zlib-feedstock.svg?label=linux)](https://circleci.com/gh/conda-forge/zlib-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/zlib-feedstock.svg?label=OSX)](https://travis-ci.org/conda-forge/zlib-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/zlib-feedstock.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/zlib-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/zlib-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/zlib-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/zlib-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/zlib-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/zlib-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/zlib-feedstock/branch/master)
 
 Current release info
 ====================
