@@ -19,7 +19,6 @@ requirements:
         - cmake       # [win]
         - msinttypes  # [win and vc<14]
         - {{ compiler('c') }}  # [win]
-        - toolchain   # [unix]
 
 test:
     commands:
